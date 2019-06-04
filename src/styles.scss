@@ -2,3 +2,66 @@
 
 @import '~@angular/material/theming';
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: #f7f7f7;
+}
+
+img {
+    max-width: 100%;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.form-full-width {
+    width: 100%;
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.spacer {
+    margin-bottom: 1em !important;
+}
+
+.transparent {
+    background: transparent;
+}
+
+.component-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.component-list > * {
+    box-sizing: border-box;
+}
+
+.component-list > *:not(:last-child) {
+    margin-right: 32px;
+}
+
+.component-list-item {
+    flex: 0 1 calc(33.3% - 32px);
+}
+
+/* Material Icons */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }

@@ -1,3 +1,7 @@
-<p>
-  rest works!
-</p>
+<h2>rest works!</h2>
+
+<ul>
+  <ng-container *ngFor="let event of data?.events">
+    <li class="form-full-width"><strong>{{event}}</strong></li>
+  </ng-container>
+</ul>

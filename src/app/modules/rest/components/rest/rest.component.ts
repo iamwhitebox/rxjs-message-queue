@@ -6,14 +6,18 @@ import { delay } from 'rxjs/operators';
 @Component({
   selector: 'app-rest',
   templateUrl: './rest.component.html',
-  styleUrls: ['./rest.component.css']
+  styleUrls: ['./rest.component.scss']
 })
 export class RestComponent implements OnInit {
 
   constructor(
     private _restService: RestService,
     private _runEngineService: RunEngineService
-  ) { }
+  ) {
+    this.data['events'] = [];
+  }
+
+  data: any = {};
 
   ngOnInit() {
     this._restService.get('https://jsonplaceholder.typicode.com/todos/1')
@@ -24,9 +28,10 @@ export class RestComponent implements OnInit {
         this._runEngineService.channel('login')
           .subject('login.event')
           .next({
-            title: 'Event from Channel A',
-            text: 'Your first login post has been added',
+            title: 'Event received from Channel A'
           });
+
+        this.data['events'].push('Login Event Sent!');
       });
 
     this._restService.get('https://jsonplaceholder.typicode.com/todos/2')
@@ -37,9 +42,10 @@ export class RestComponent implements OnInit {
         this._runEngineService.channel('dashboard')
           .subject('dashboard.event')
           .next({
-            title: 'Event from Channel B',
-            text: 'Your first dashboard post has been added',
+            title: 'Event received from Channel B'
           });
+
+        this.data['events'].push('Dashboard Event Sent!');
       });
 
   }
