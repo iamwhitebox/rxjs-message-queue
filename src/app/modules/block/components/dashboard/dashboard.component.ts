@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from '../base-component/base.component';
+import { BaseComponent } from '../base/base.component';
 import { RunEngineService } from 'src/app/shared/services/run-engine/run-engine.service';
 
 @Component({
@@ -9,19 +9,16 @@ import { RunEngineService } from 'src/app/shared/services/run-engine/run-engine.
 })
 export class DashboardComponent extends BaseComponent implements OnInit {
   constructor(
-    private _runEngineService: RunEngineService
+    _runEngineService: RunEngineService
   ) {
-    super();
+    super(
+      _runEngineService,
+      'dashboard'
+    );
   }
 
   data: any;
 
   ngOnInit() {
-    const subscription = this._runEngineService.channel('dashboard')
-      .observe('dashboard.event')
-      .subscribe(
-        data => this.data = data,
-        error => alert(error)
-      );
   }
 }
