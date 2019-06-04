@@ -15,15 +15,13 @@ export class BaseComponent implements OnInit {
     this.subscription = this._runEngineService.channel(this._eventKey)
       .observe(`${this._eventKey}.event`)
       .subscribe(
-        data => {
-          this.data = data
-        },
+        event => this.events.push(event),
         error => alert(error)
       );
   }
 
   subscription: any;
-  data: any;
+  events: any[] = [];
 
   ngOnInit() {
   }

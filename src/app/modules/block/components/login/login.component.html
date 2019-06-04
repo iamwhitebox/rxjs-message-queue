@@ -1,2 +1,6 @@
 <h2>login works!</h2>
-<strong>{{data?.title}}</strong>
+<ul>
+    <ng-container *ngFor="let event of events">
+        <li class="form-full-width"><strong>{{event.title}}</strong></li>
+    </ng-container>
+</ul>

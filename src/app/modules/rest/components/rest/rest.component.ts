@@ -48,6 +48,20 @@ export class RestComponent implements OnInit {
         this.data['events'].push('Dashboard Event Sent!');
       });
 
+    this._restService.get('https://jsonplaceholder.typicode.com/todos/1')
+      .pipe(
+        delay(3000)
+      )
+      .subscribe(data => {
+        this._runEngineService.channel('login')
+          .subject('last.login')
+          .next({
+            title: 'Other Event received from Channel A'
+          });
+
+        this.data['events'].push('Other Login Event Sent!');
+      });
+
   }
 
 }

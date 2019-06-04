@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '../base/base.component';
 import { RunEngineService } from 'src/app/shared/services/run-engine/run-engine.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,13 @@ export class LoginComponent extends BaseComponent implements OnInit {
     );
   }
 
-  data: any;
+  events: any[] = [];
 
   ngOnInit() {
+    const channel = this._runEngineService.channel('login');
+
+    const subscription = channel.observe('last.login')
+      .subscribe(data => this.events.push(data));
   }
+
 }
